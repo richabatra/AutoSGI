@@ -1,0 +1,11 @@
+Package: autosgi
+Type: Package
+Title: AutoSGI: an algorithm for clinical subgroup identification using automated metabolite clustering
+Version: 0.0.1.0 
+RoxygenNote: 7.3.1
+Encoding: UTF-8
+Depends: 
+    R (>= 3.5.0), sgi, ape, survival, ggplot2, ggdendro, ggrepel, data.table, readxl, writexl, grid, gridExtra, dendextend
+Suggests:
+    GSVA, destiny, rms
+LazyData: true

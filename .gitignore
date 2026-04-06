@@ -1,0 +1,11 @@
+.Rproj.user
+.Rapp.history
+.Rhistory
+.Ruserdata
+# OS generated files #
+######################
+*.DS_Store
+*.DS_Store?
+# DUA protected data #
+*.RData
+*.rds
