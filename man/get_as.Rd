@@ -2,22 +2,43 @@
 % Please edit documentation in R/get_as.R
 \name{get_as}
 \alias{get_as}
-\title{Pathway Feature Set Construction}
+\title{Reconstruct an SGI Association Object from AutoSGI Results}
 \usage{
 get_as(sgi_params, sheet_name, cluster_number, cluster_names)
 }
 \arguments{
-\item{annotations}{A dataframe with the first column consisting on the metabolite names and the second column consisting of the corresponding annotations}
+\item{sgi_params}{
+The \code{sgi_params} object used to run the original AutoSGI analysis.
+}
+
+\item{sheet_name}{
+The path to the AutoSGI-generated Excel results file.
+}
+
+\item{cluster_number}{
+The number of the SGI cluster to reconstruct. The function reads the worksheet named
+\code{"SGI <cluster_number>"}.
+}
+
+\item{cluster_names}{
+A character vector containing the names of the features used to construct the cluster.
+}
 }
 \value{
-Returns a list of lists with a set of metabolite names in each list
+An SGI association object containing the reconstructed cluster analysis and the adjusted
+p-values stored in the corresponding AutoSGI results sheet.
 }
 \description{
-This is a function which constructs feature sets for AutoSGI based on biomolecular pathway annotations
+Reconstructs an SGI association object for a selected cluster from an AutoSGI-generated
+Excel results file. The returned object can be further inspected, analyzed, or plotted.
 }
 \examples{
 \dontrun{
+association_object <- get_as(
+  sgi_params = sgi_params,
+  sheet_name = "AutoSGI_results.xlsx",
+  cluster_number = 3,
+  cluster_names = c("feature_1", "feature_2", "feature_3")
+)
 }
-
-
 }
