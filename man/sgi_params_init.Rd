@@ -2,7 +2,7 @@
 % Please edit documentation in R/sgi_params_init.R
 \name{sgi_params_init}
 \alias{sgi_params_init}
-\title{SGI parameter intialization}
+\title{Initialize SGI Parameters}
 \usage{
 sgi_params_init(
   dataset,
@@ -14,23 +14,44 @@ sgi_params_init(
 )
 }
 \arguments{
-\item{dataset}{A dataset with metabolite columns}
+\item{dataset}{
+A numeric data frame or matrix with samples as rows and molecular features as columns.
+}
 
-\item{clins}{}
+\item{clins}{
+A data frame containing clinical variables for the same samples and in the same row order as \code{dataset}.
+}
 
-\item{annotations}{A dataframe with the first column consisting on the metabolite names and the second column consisting of the corresponding annotations}
+\item{minsize}{
+The minimum cluster size used in SGI analyses.
+}
 
-\item{method}{The method to perform reduction, ssgsea or pseudotime}
+\item{user_defined_tests}{
+A named list of user-defined statistical testing functions. Names should correspond to supported clinical variable classes.
+}
+
+\item{sgi_distance}{
+The distance metric used for hierarchical clustering. Must be a valid option accepted by \code{\link[stats]{dist}}.
+}
+
+\item{sgi_linkage}{
+The linkage method used for hierarchical clustering. Must be a valid option accepted by \code{\link[stats]{hclust}}.
+}
 }
 \value{
-Always returns an updated dataframe with one column for each annotation
+An object of class \code{"sgi_params"} containing the validated SGI parameters.
 }
 \description{
-This is a function which initializes the standardized SGI parameters across all AutoSGI runs and checks for data validity
+Initializes standardized SGI parameters for AutoSGI analyses and checks the input data and clustering settings for validity.
 }
 \examples{
 \dontrun{
+params <- sgi_params_init(
+  dataset = metabolite_data,
+  clins = clinical_data,
+  minsize = 18,
+  sgi_distance = "euclidean",
+  sgi_linkage = "ward.D2"
+)
 }
-
-
 }
