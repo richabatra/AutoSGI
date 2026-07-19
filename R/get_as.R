@@ -1,15 +1,23 @@
-#' Pathway Feature Set Construction
+#' Reconstruct an SGI Association Object
 #'
-#' This is a function which constructs feature sets for AutoSGI based on biomolecular pathway annotations
+#' Reconstructs an SGI association object for a selected cluster from an
+#' AutoSGI-generated Excel results file.
 #'
-#' @param annotations A dataframe with the first column consisting on the metabolite names and the second column consisting of the corresponding annotations
-#' @return Returns a list of lists with a set of metabolite names in each list
+#' @param sgi_params The `sgi_params` object used for the original AutoSGI analysis.
+#' @param sheet_name Path to the AutoSGI-generated Excel results file.
+#' @param cluster_number Number of the cluster to reconstruct.
+#' @param cluster_names Character vector of feature names in the cluster.
+#' @return An SGI association object containing the adjusted p-values from the results sheet.
 #' @export
 #' @examples
 #' \dontrun{
+#' association_object <- get_as(
+#'   sgi_params,
+#'   "AutoSGI_results.xlsx",
+#'   3,
+#'   c("feature_1", "feature_2", "feature_3")
+#' )
 #' }
-#'
-#'
 get_as <- function(sgi_params, sheet_name, cluster_number, cluster_names) {
   as_info = read_xlsx(path = sheet_name, sheet = paste0("SGI ", cluster_number)) %>% as.data.frame()
   rownames(as_info) = as_info[[1]]
