@@ -2,8 +2,8 @@
 # ROSMAP METABOLOMICS - AUTOSGI CASE STUDY
 ################################################################################
 #
-# Purpose: Analyze ROS/MAP brain metabolomics data using SGI and AutoSGI
-#          to identify metabolite clusters associated with clinical phenotypes
+# Purpose: Analyze ROS/MAP brain metabolomics data using AutoSGI
+#          to identify sample clusters associated with clinical phenotypes i.e. subgroups
 #
 # Study: Religious Orders Study and Memory and Aging Project (ROS/MAP)
 # Data: Brain metabolomics corrected for post-mortem interval (PMI)
@@ -14,7 +14,7 @@
 # processed to regress out the effect of post-mortem interval (PMI).
 #
 # Last modified: Richa Batra
-# Date: 2025-09-20
+# Date: 2026-07-18
 #
 # Outputs:
 #   - Cleaned data objects (SummarizedExperiment, metabolite matrix, phenotypes)
@@ -30,7 +30,8 @@
 rm(list = ls())
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 ################################################################################
-
+# compute run time
+run_time <- system.time({
 # Set random seed for reproducibility
 set.seed(2789465)
 
@@ -100,7 +101,7 @@ save(rosmap_data, metabolite_matrix, phenotype_data,
 
 
 ################################################################################
-# SUPERVISED GROUP IDENTIFICATION (SGI) ANALYSIS
+# SUBGROUP IDENTIFICATION (SGI) ANALYSIS
 ################################################################################
 
 ## Prepare ordinal variables ----
@@ -194,7 +195,10 @@ autosgi_results <- hierarchical_selection(
   )
 )
 
-
+})
+print(run_time)
+# user   system  elapsed 
+# 1600.413   48.495 1673.444 
 ################################################################################
 # END OF SCRIPT
 ################################################################################

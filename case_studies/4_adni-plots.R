@@ -18,6 +18,8 @@
 #   2. *_path_feat_plots.pdf - Feature abundances
 #   3. *_pheno_plots.pdf - Phenotype distributions
 #
+# Note: Supplementary Figures 2 and 3 were assembled in Illustrator 
+# using the output for this script. 
 ################################################################################
 
 

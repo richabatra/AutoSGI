@@ -21,6 +21,8 @@
 #   2. *_path_feat_plots.pdf - Metabolite abundances
 #   3. *_tree_plots.pdf - Phenotype distributions
 #
+# Note: Figure 1 in the Manuscript and Supplementary Figure 1 were assembled
+# in Illustrator using the output for this script. 
 ################################################################################
 
 
@@ -103,7 +105,7 @@ associations_file <- paste0(
 ################################################################################
 #
 # Generates plots for metabolite clusters identified through hierarchical
-# clustering and supervised group identification
+# clustering and subgroup identification
 #
 ################################################################################
 
